@@ -31,7 +31,9 @@ if ( $arResult['AUTHORIZED'] ) {
             </div>
 		<? elseif ( $arResult['SUCCESS'] ): ?>
             <div class="alert alert-success">
-				<?= $arResult['SUCCESS']; ?>
+                Ваши регистрационные данные были высланы на email <?=$_REQUEST['USER_EMAIL']?>.
+                Пожалуйста, дождитесь письма, так как ссылка для восстановления пароля
+                изменяется при каждом запросе.<br>
                 <!--        <script>-->
                 <!--            setTimeout(function(){-->
                 <!--                location.href = '/auth/'-->
@@ -47,10 +49,11 @@ if ( $arResult['AUTHORIZED'] ) {
             <div class="layout-mobile">
 
                 <div class="form_input email">
-                    <div class="">Логин (восстановление пароля юридического лица) или Email (восстановление пароля физического лица)</div>
                     <input type="text" name="<?= $arResult['FIELDS']['email'];?>" maxlength="255" value="" />
                 </div>
-<!--                <p>Или</p>-->
+                <div class="">Логин (восстановление пароля юридического лица) или Email (восстановление пароля физического лица)</div>
+
+                <!--                <p>Или</p>-->
 <!--                <div class="form_input email">-->
 <!--                    <div class="">Email (восстановление физического лица)</div>-->
 <!--                    <input type="text" name="--><?//= $arResult['FIELDS']['email'];?><!--" maxlength="255" value="" />-->
