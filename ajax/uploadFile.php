@@ -2,10 +2,11 @@
 <?
 function reSaveFile($fileId){
 	$fileInfo = CFile::GetFileArray( $fileId );
-	//echo "<pre>"; print_r($fileInfo); echo "</pre>";
+	$exten = explode('.',$fileInfo["ORIGINAL_NAME"]);
+//	echo "<pre>"; print_r($exten); echo "</pre>";
 	if($fileInfo != ""){
 		$file = $_SERVER["DOCUMENT_ROOT"].$fileInfo["SRC"];
-		$newfile = $_SERVER["DOCUMENT_ROOT"].'/sandbox/mass_reg/'.$fileInfo["ORIGINAL_NAME"];
+		$newfile = $_SERVER["DOCUMENT_ROOT"].'/upload/autofill_reestr/reestr.'.$exten[1];
 		if(file_exists($newfile)){
 			unlink($newfile);
 		}
