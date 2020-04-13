@@ -26,27 +26,42 @@ class MainForgotPasswdComponent extends MainAuthFormComponent
 		}
 		$main_config = new reestr\mainConfig();
 
-		//делаем обработку для юрлица
-		if(is_numeric($this->requestField('email'))){
-			//получаем всех физлиц ответственных за юрлицо по ОГРН юр лица
+		if($this->requestField('email') != 'admin'){
+			$res = \CUser::SendPassword(
+				$this->requestField('email'),
+				'',
+				$lid,
+				$this->request('captcha_word'),
+				$this->request('captcha_sid')
+			);
 			$arEmails = $main_config->FindFizByUr($this->requestField('email'));
-			$emailStr = implode(',',$arEmails);
-			$send_mess = new reestr\sendMessage();
-			//$send_mess->sendChangePassUser($this->requestField('email'), $emailStr);
-			$rsUser = CUser::GetByLogin($this->requestField('email'));
-			$arUser = $rsUser->Fetch();
+			if(is_numeric($this->requestField('email')))
+				$_REQUEST['USER_EMAIL'] = array_pop($arEmails);
+			else
+				$_REQUEST['USER_EMAIL'] = $this->requestField('email');
+		}
 
-			$ID = intval($arUser["ID"]);
-			$salt = randString(8);
-			$checkword = md5(CMain::GetServerUniqID().uniqid());
-			$_checkword = $salt.md5($salt.$checkword);
-			$arUser["CHECKWORD"] = $_checkword;
-			global $DB;
-			$strSql = "UPDATE b_user SET CHECKWORD = '".$_checkword."', CHECKWORD_TIME = ".$DB->CurrentTimeFunction().", LID = '".$DB->ForSql($lid, 2)."', TIMESTAMP_X = TIMESTAMP_X WHERE ID = '".$ID."' AND (EXTERNAL_AUTH_ID IS NULL OR EXTERNAL_AUTH_ID='') ";
-			$DB->Query($strSql);
-
-			$send_mess->sendChangePassUser($arUser, $emailStr);
-			$this->arResult['SUCCESS'] = "На почты всех ответственных было отправлено сообщение с ссылкой на восстановление пароля";
+		//делаем обработку для юрлица
+//		if(is_numeric($this->requestField('email'))){
+			//получаем всех физлиц ответственных за юрлицо по ОГРН юр лица
+//			$arEmails = $main_config->FindFizByUr($this->requestField('email'));
+//			$emailStr = implode(',',$arEmails);
+//			$send_mess = new reestr\sendMessage();
+//			//$send_mess->sendChangePassUser($this->requestField('email'), $emailStr);
+//			$rsUser = CUser::GetByLogin($this->requestField('email'));
+//			$arUser = $rsUser->Fetch();
+//
+//			$ID = intval($arUser["ID"]);
+//			$salt = randString(8);
+//			$checkword = md5(CMain::GetServerUniqID().uniqid());
+//			$_checkword = $salt.md5($salt.$checkword);
+//			$arUser["CHECKWORD"] = $_checkword;
+//			global $DB;
+//			$strSql = "UPDATE b_user SET CHECKWORD = '".$_checkword."', CHECKWORD_TIME = ".$DB->CurrentTimeFunction().", LID = '".$DB->ForSql($lid, 2)."', TIMESTAMP_X = TIMESTAMP_X WHERE ID = '".$ID."' AND (EXTERNAL_AUTH_ID IS NULL OR EXTERNAL_AUTH_ID='') ";
+//			$DB->Query($strSql);
+//
+//			//$send_mess->sendChangePassUser($arUser, $emailStr);
+//			$this->arResult['SUCCESS'] = "На почту ответственного $emailStr было отправлено сообщение с ссылкой на восстановление пароля";
 			// $changePasswordRes = CUser::ChangePassword($this->requestField('email'), $arUser["CHECKWORD"], $new_password, $new_password);
 			// $new_password = randString(7, array(
 			//   "abcdefghijklnmopqrstuvwxyz",
@@ -69,16 +84,16 @@ class MainForgotPasswdComponent extends MainAuthFormComponent
 			// 	$this->request('captcha_sid')
 			// );
 
-		}elseif($this->requestField('email')){
-			$res = \CUser::SendPassword(
-				$this->requestField('email'),
-				'',
-				$lid,
-				$this->request('captcha_word'),
-				$this->request('captcha_sid')
-			);
-
-		}
+//		}elseif($this->requestField('email')){
+//			$res = \CUser::SendPassword(
+//				$this->requestField('email'),
+//				'',
+//				$lid,
+//				$this->request('captcha_word'),
+//				$this->request('captcha_sid')
+//			);
+//
+//		}
 
 
 		if (
