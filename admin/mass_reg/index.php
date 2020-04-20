@@ -58,7 +58,7 @@ if(isset($_GET["success_send"]) && $_GET["success_send"] == "true"){
 			// создаем пользователя и отправляем письмо пользователю с приглашением к дальнейшему заполнению профиля
 			$user_id = $Autoregistration->create_user( $person );
 			// создаем элементы в инфоблоке согласно типу пользователя
-			if ( $user_id ) {
+			if ( $user_id['id'] ) {
 				$PROP     = array();
 				$PROP[1]  = $person['LAST_NAME'];
 				$PROP[2]  = $person['SECOND_NAME'];
@@ -66,7 +66,7 @@ if(isset($_GET["success_send"]) && $_GET["success_send"] == "true"){
 				$PROP[10] = $person['EMAIL'];
 				$PROP[12] = $person['WORK_PLACE'];
 				$PROP[72] = $person['ENTITY_NET'];
-				$PROP[73] = $user_id;
+				$PROP[73] = $user_id['id'];
 				$PROP[19] = explode( ';', $person['MATERIAL_AUTHOR'] );
 
 				$arLoadProductArray = Array(
@@ -82,7 +82,10 @@ if(isset($_GET["success_send"]) && $_GET["success_send"] == "true"){
 				$fields             = Array(
 					$userInfoField => $PRODUCT_ID,
 				);
-				if($user->Update( intval( $user_id ), $fields )){
+				if($user->Update( intval( $user_id['id'] ), $fields )){
+				    $person['PASSWORD'] = $user_id['password'];
+				    $person['USER_ID'] = $user_id['conf']['USER_ID'];
+				    $person['CONFIRM_CODE'] = $user_id['conf']['CONFIRM_CODE'];
 					$event->sendInviteFiz($person);
 	            }
 			}
@@ -115,7 +118,7 @@ if(isset($_GET["success_send"]) && $_GET["success_send"] == "true"){
 			$PROP[40] = $person['SITE'];
 			$PROP[71] = $person['ID'];
 			$PROP[76] = $person['NAME'];
-			$PROP[74] = $user_id;
+			$PROP[74] = $user_id['id'];
 			$PROP[47] = explode( ';', $person['MATERIAL_WORKER'] );
 			$PROP[41] = array( $resp['ID'] );
 
@@ -133,9 +136,12 @@ if(isset($_GET["success_send"]) && $_GET["success_send"] == "true"){
 				$userInfoField => $PRODUCT_ID,
 			);
 			//обновляем связку через пользовательские свойства
-			if($user->Update( intval( $user_id ), $fields )){
+			if($user->Update( intval( $user_id['id'] ), $fields )){
 			    $person['FIRST_NAME'] = $resp["PROPERTY_FIRST_NAME_VALUE"];
 			    $person['LAST_NAME'] = $resp["PROPERTY_SURNAME_VALUE"];
+			    $person['PASSWORD'] = $user_id["password"];
+				$person['USER_ID'] = $user_id['conf']['USER_ID'];
+				$person['CONFIRM_CODE'] = $user_id['conf']['CONFIRM_CODE'];
 				$event->sendInviteUr($person);
 	        }
 			//добавляем привязку пользователя к юрлицу
