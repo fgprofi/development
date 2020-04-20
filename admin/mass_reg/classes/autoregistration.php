@@ -25,8 +25,8 @@ class Autoregistration {
 		$arResult = array();
 		$arResult['VALUES']["GROUP_ID"] = array( 5, 8 );
 
-		$bConfirmReq = ( $arResult["USE_EMAIL_CONFIRMATION"] === "Y" );
-		$active      = ( $bConfirmReq || $arResult["PHONE_REQUIRED"] ? "N" : "Y" );
+		$bConfirmReq = "Y";
+		$active      = "N";
 
 		$login = $person['EMAIL'];
 		$name = $person['FIRST_NAME'];
@@ -42,7 +42,12 @@ class Autoregistration {
 		$arResult['VALUES']["NAME"]             = $name;
 		$arResult['VALUES']["LAST_NAME"]        = $last_name;
 		$arResult['VALUES']["EMAIL"]            = $person['EMAIL'];
-		$arResult['VALUES']["PASSWORD"]         = randString( 8 );
+		$arResult['VALUES']["PASSWORD"]         = randString(7, array(
+		  "abcdefghijklnmopqrstuvwxyz",
+		  "ABCDEFGHIJKLNMOPQRSTUVWX­YZ",
+		  "0123456789",
+		  ",.<>/?;:'\"[]{}\|\`~!@#\$%^&*()-_+=",
+		));
 		$arResult['VALUES']["CONFIRM_PASSWORD"] = $arResult['VALUES']["PASSWORD"];
 
 		$arResult['VALUES']["CHECKWORD"]       = md5( CMain::GetServerUniqID() . uniqid() );
@@ -79,6 +84,11 @@ class Autoregistration {
 		$user = new CUser();
 		if ( $bOk ) {
 			$ID = $user->Add( $arResult["VALUES"] );
+			if (intval($ID) > 0){
+			    //echo "Пользователь успешно добавлен.";
+			}else{
+			    echo $user->LAST_ERROR;
+			}
 		}
 
 		if ( intval( $ID ) > 0 ) {
@@ -88,15 +98,16 @@ class Autoregistration {
 			$arResult['VALUES']["USER_ID"] = $ID;
 
 			$arEventFields = $arResult['VALUES'];
-//			unset( $arEventFields["PASSWORD"] );
+			$p = $arEventFields["PASSWORD"];
+			unset( $arEventFields["PASSWORD"] );
 			unset( $arEventFields["CONFIRM_PASSWORD"] );
-// отправка сообщений
-//			$event = new CEvent;
-//			$event->SendImmediate( "NEW_USER", SITE_ID, $arEventFields );
+			// отправка сообщений
+			$event = new CEvent;
+			$event->Send( "NEW_USER", SITE_ID, $arEventFields );
 //			if ( $bConfirmReq ) {
-//				$event->SendImmediate( "NEW_USER_CONFIRM", SITE_ID, $arEventFields );
+//				$event->Send( "NEW_USER_CONFIRM", SITE_ID, $arEventFields );
 //			}
 		}
-		return $ID;
+		return array('id'=>$ID,'password'=>$p,'conf' => $arEventFields);
 	}
 }
