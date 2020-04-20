@@ -1648,7 +1648,7 @@ abstract class CAllUser extends CDBResult
 
 					if($arUser["ACTIVE"] == "Y")
 					{
-						CUser::SendUserInfo($arUser["ID"], $arParams["SITE_ID"], GetMessage("INFO_REQ"), true, 'USER_PASS_REQUEST');
+						CUser::SendUserInfo($arUser["ID"], $arParams["SITE_ID"], GetMessage("INFO_REQ"), false, 'USER_PASS_REQUEST');
 						$f = true;
 					}
 					elseif($confirmation)
