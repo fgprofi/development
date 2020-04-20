@@ -129,10 +129,13 @@ class sendMessage extends \reestr\mainConfig {
 		$arEventFields = array(
 			'NAME' => $arUser['FIRST_NAME'],
 			'SURNAME' => $arUser['LAST_NAME'],
-			'EMAIL' => $arUser['EMAIL']
+			'EMAIL' => $arUser['EMAIL'],
+			'PASSWORD' => $arUser['PASSWORD'],
+			'USER_ID' => $arUser['USER_ID'],
+			'CONFIRM_CODE' => $arUser['CONFIRM_CODE'],
 		);
 		// отправка сообщений
-		//$this->event->Send( "INVITE_F", SITE_ID, $arEventFields );
+		$this->event->Send( "INVITE_F", SITE_ID, $arEventFields );
 	}
 	public function sendInviteUr($arUser){
 		$arEventFields = array(
@@ -140,9 +143,12 @@ class sendMessage extends \reestr\mainConfig {
 			'EMAIL' => $arUser['EMAIL'],
 			'FIRST_NAME' => $arUser['FIRST_NAME'],
 			'LAST_NAME' => $arUser['LAST_NAME'],
+			'PASSWORD' => $arUser['PASSWORD'],
+			'USER_ID' => $arUser['USER_ID'],
+			'CONFIRM_CODE' => $arUser['CONFIRM_CODE'],
 		);
 		// отправка сообщений
-		//$this->event->Send( "INVITE_U", SITE_ID, $arEventFields );
+		$this->event->Send( "INVITE_U", SITE_ID, $arEventFields );
 	}
 
 }
