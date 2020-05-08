@@ -86,6 +86,9 @@ if(isset($_GET["success_send"]) && $_GET["success_send"] == "true"){
 				    $person['PASSWORD'] = $user_id['password'];
 				    $person['USER_ID'] = $user_id['conf']['USER_ID'];
 				    $person['CONFIRM_CODE'] = $user_id['conf']['CONFIRM_CODE'];
+					$handle = fopen('/log/log.txt','a+');
+					fwrite($handle,'f - '.implode(';',$person)."\n");
+					fclose($handle);
 					$event->sendInviteFiz($person);
 	            }
 			}
@@ -142,6 +145,9 @@ if(isset($_GET["success_send"]) && $_GET["success_send"] == "true"){
 			    $person['PASSWORD'] = $user_id["password"];
 				$person['USER_ID'] = $user_id['conf']['USER_ID'];
 				$person['CONFIRM_CODE'] = $user_id['conf']['CONFIRM_CODE'];
+				$handle = fopen('/log/log.txt','a+');
+				fwrite($handle,'u - '.implode(';',$person)."\n");
+				fclose($handle);
 				$event->sendInviteUr($person);
 	        }
 			//добавляем привязку пользователя к юрлицу
@@ -167,6 +173,10 @@ if(isset($_GET["success_send"]) && $_GET["success_send"] == "true"){
 					<li class="sidebar__item f_need_moderation"> <a class="sidebar__link" href="/admin/queries_f/">Запросы физ.лица</a> </li>
 					<li class="sidebar__item u_need_moderation"> <a class="sidebar__link" href="/admin/queries_u/">Запросы юр.лица</a> </li>
 					<li class="sidebar__item"> <a class="sidebar__link" href="/admin/report">Отчет</a> </li>
+					<li class="sidebar__item active">
+                        <a class="sidebar__link"
+                           href="/admin/mass_reg/">Массовая загрузка пользователей</a>
+                    </li>
 					<?/*<li class="sidebar__item">
 	                    <a class="sidebar__link"
 	                       href="/support/">Техподдержка</a>
