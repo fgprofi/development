@@ -49,12 +49,20 @@ if(isset($_GET["success_send"]) && $_GET["success_send"] == "true"){
 	// перебираем созданный выше массив согласно условию
 	$Autoregistration = new Autoregistration();
 	$arRes            = array();
-	foreach ( $file_as_array['Физлица']['DATA'] as $person ) {
+	$i = 0;
+	foreach ( $file_as_array['Физлица']['DATA'] as $key => $person ) {
 
 		//проверяем наличие пользователя
 		$ready_user = CUser::GetByLogin( $person['EMAIL'] )->Fetch();
 
 		if ( ! $ready_user && $person['EMAIL']) {
+		    if($i == 1){
+			    echo date('h:i:s') . "\n";
+		        sleep(15);
+// завершение ожидания
+			    echo date('h:i:s') . "\n";
+		        $i = 0;
+            }
 			// создаем пользователя и отправляем письмо пользователю с приглашением к дальнейшему заполнению профиля
 			$user_id = $Autoregistration->create_user( $person );
 			// создаем элементы в инфоблоке согласно типу пользователя
@@ -92,16 +100,23 @@ if(isset($_GET["success_send"]) && $_GET["success_send"] == "true"){
 					$event->sendInviteFiz($person);
 	            }
 			}
+			$i++;
 		}
 	}
 
-
+$j = 0;
 	foreach ( $file_as_array['ЮрЛица']['DATA'] as $person ) {
 		//проверяем наличие пользователя
 		$ready_user = CUser::GetByLogin( $person['OGRN'] )->Fetch();
 
 		if ( ! $ready_user && $person['OGRN'] ) {
-
+			if($j == 1){
+				echo date('h:i:s') . "\n";
+				sleep(15);
+// завершение ожидания
+				echo date('h:i:s') . "\n";
+				$j = 0;
+			}
 			// создаем элементы в инфоблоке согласно типу пользователя
 			$resp = CIBlockElement::GetList( array(), array( "IBLOCK_ID"         => 7,
 			                                                 "PROPERTY_MARGE_ID" => $person['ID']
@@ -154,6 +169,7 @@ if(isset($_GET["success_send"]) && $_GET["success_send"] == "true"){
             $curUr = array("REPRESENTATIVE_OF_LEGAL_FACES",$resp['PROPERTY_REPRESENTATIVE_OF_LEGAL_FACES_VALUE']);
 			$curUr["REPRESENTATIVE_OF_LEGAL_FACES"][] = $PRODUCT_ID;
 			CIBlockElement::SetPropertyValuesEx($resp['ID'], 7, $curUr);
+			$j++;
 		}
 
 	}

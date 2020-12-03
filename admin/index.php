@@ -1,5 +1,5 @@
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$USER_PROP = needAuth('/freg/');
+$USER_PROP = needAuth('/auth/');
 $APPLICATION->SetTitle("Администратор");?>
 <main class="main">
     <div class="content">
@@ -22,6 +22,10 @@ $APPLICATION->SetTitle("Администратор");?>
                     <li class="sidebar__item">
                         <a class="sidebar__link"
                            href="/admin/report">Отчет</a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__link"
+                           href="/admin/mass_reg/">Массовая загрузка пользователей</a>
                     </li>
 <!--                    <li class="sidebar__item">-->
 <!--                        <a class="sidebar__link"-->

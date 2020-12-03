@@ -37,7 +37,7 @@ class Autoregistration {
 			$name = $person['NAME'];
 			$last_name = $person['ORGANIZATION_TYPE'];
 		}
-
+		$login = trim($login);
 		$arResult['VALUES']["LOGIN"]            = $login;
 		$arResult['VALUES']["NAME"]             = $name;
 		$arResult['VALUES']["LAST_NAME"]        = $last_name;

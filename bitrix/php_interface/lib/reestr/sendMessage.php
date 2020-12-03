@@ -146,9 +146,11 @@ class sendMessage extends \reestr\mainConfig {
 			'PASSWORD' => $arUser['PASSWORD'],
 			'USER_ID' => $arUser['USER_ID'],
 			'CONFIRM_CODE' => $arUser['CONFIRM_CODE'],
+			'LOGIN' => $arUser['OGRN'],
 		);
 		// отправка сообщений
-		$this->event->Send( "INVITE_U", SITE_ID, $arEventFields );
+		if($arUser['EMAIL'])
+			$this->event->Send( "INVITE_U", SITE_ID, $arEventFields );
 	}
 
 }

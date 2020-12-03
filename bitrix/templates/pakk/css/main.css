@@ -6,7 +6,36 @@
 .webform-field-upload-notice {
     display: none;
 }
-
+.download_mass_reg_file{
+    padding: 15px 40px;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 4px;
+    color: #1EB795;
+    background-color: #dff1ed;
+    margin-right: 60px;
+    cursor: pointer;
+    transition: all .3s;
+    display: inline-block;
+    margin-bottom: 50px;
+}
+.send_mass_reg_file.active{
+    background-color: #dff1ed;
+    color: #1EB795;
+}
+.send_mass_reg_file{
+    padding: 15px 40px;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 4px;
+    color: white;
+    background-color: #e57e6b;
+    margin-right: 60px;
+    cursor: pointer;
+    transition: all .3s;
+    display: inline-block;
+    margin-bottom: 190px;
+}
 .input_box.checkbox.disabled_check {
     opacity: 0.5;
 }
@@ -3327,6 +3356,7 @@ li {
     font-size: 1rem;
     line-height: 1.5em;
     color: #1A1D23;
+    text-align: justify;
 }
 
 .item-news__title a {
@@ -3334,6 +3364,9 @@ li {
     line-height: 1.5em;
     color: #1A1D23;
     text-decoration: none;
+}
+.detail-news table {
+    width: 100%;
 }
 
 .item-news__title a:hover {
@@ -3357,6 +3390,7 @@ li {
     font-size: 0.875rem;
     line-height: 1.7857em;
     color: #333333;
+    text-align: justify;
 }
 
 .item-news__read-more {
@@ -3436,6 +3470,39 @@ li {
     display: -ms-flexbox;
     display: flex;
     margin-bottom: 17px;
+}
+
+.detail-news__content {
+    font-size: 0.875rem;
+    line-height: 1.7857em;
+    color: #333333;
+    text-align: justify;
+}
+
+.detail-news__content ul {
+    margin: 15px 0;
+}
+
+.detail-news__content li {
+    font-size: 0.875rem;
+    line-height: 1.7857em;
+    color: #333333;
+    margin: 10px 0;
+    list-style: none;
+    padding-left: 30px;
+    position: relative;
+}
+
+.detail-news__content li:before {
+    content: '';
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: #333333;
+    transform: translateY(8px);
+    position: absolute;
+    left: 15px;
 }
 
 .detail-news__left {

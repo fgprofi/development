@@ -105,7 +105,7 @@ class CAgent extends CAllAgent
 		}
 
 		$strSql=
-			"SELECT ID, NAME, AGENT_INTERVAL, IS_PERIOD, MODULE_ID ".
+			"SELECT ID, NAME, AGENT_INTERVAL, IS_PERIOD, MODULE_ID, RETRY_COUNT ".
 			"FROM b_agent ".
 			"WHERE ACTIVE='Y' ".
 			"	AND NEXT_EXEC<=now() ".
@@ -147,8 +147,14 @@ class CAgent extends CAllAgent
 					continue;
 			}
 
+			if($arAgent["RETRY_COUNT"] >= 3)
+			{
+				$DB->Query("UPDATE b_agent SET ACTIVE='N' WHERE ID=".$arAgent["ID"]);
+				continue;
+			}
+
 			//update the agent to the running state - if it fails it'll go to the end of the list on the next try
-			$DB->Query("UPDATE b_agent SET RUNNING='Y' WHERE ID=".$arAgent["ID"]);
+			$DB->Query("UPDATE b_agent SET RUNNING='Y', RETRY_COUNT=RETRY_COUNT+1 WHERE ID=".$arAgent["ID"]);
 
 			//these vars can be assigned within agent code
 			$pPERIOD = $arAgent["AGENT_INTERVAL"];
@@ -202,7 +208,8 @@ class CAgent extends CAllAgent
 						LAST_EXEC=now(),
 						NEXT_EXEC=DATE_ADD(".($arAgent["IS_PERIOD"]=="Y"? "NEXT_EXEC" : "now()").", INTERVAL ".$pPERIOD." SECOND),
 						DATE_CHECK=NULL,
-						RUNNING='N'
+						RUNNING='N',
+						RETRY_COUNT=0
 					WHERE ID=".$arAgent["ID"];
 			}
 			$DB->Query($strSql);

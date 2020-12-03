@@ -179,7 +179,13 @@ form .flex>div.groop_ta:first-child {
     background: #f9f9f9;
     height: 49px;
 }
-
+.cabinet-block-form .select.error {
+    position: relative;
+    border: 1px solid #f17e6c !important;
+    border-radius: 4px;
+    background: #f9f9f9;
+    height: 49px;
+}
 .cabinet-block-form .select2-container .select2-selection--single .select2-selection__rendered {
     padding: 16px;
 }

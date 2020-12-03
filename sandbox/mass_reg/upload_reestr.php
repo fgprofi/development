@@ -7,6 +7,7 @@ require( $_SERVER['DOCUMENT_ROOT'] . '/bitrix/php_interface/include/spreadsheet-
 require( $_SERVER['DOCUMENT_ROOT'] . '/bitrix/php_interface/include/spreadsheet-reader-master/SpreadsheetReader.php' );
 require( $_SERVER['DOCUMENT_ROOT'] . "/sandbox/mass_reg/classes/autoregistration.php" );
 // загрузчик файла в папку
+//phpinfo();
 ?>
     <head>
         <title></title>
@@ -54,6 +55,7 @@ require( $_SERVER['DOCUMENT_ROOT'] . "/sandbox/mass_reg/classes/autoregistration
     </html>
 
 <?
+CModule::IncludeModule("iblock");
 $el = new CIBlockElement;
 // получаем даные из файла xlsx и помещаем в csv для дальнейшей работы
 //include '../classes/simplexlsx.class.php';

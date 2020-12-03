@@ -1,0 +1,464 @@
+@media screen and (max-width: 1440px) {
+    .sidebar.sticky {
+        padding-right: 81%;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .modern-version__text {
+        font-size: 12px;
+        line-height: 1.5;
+        width: 250px;
+    }
+
+    .modern-version__attention {
+        margin-right: 15px;
+    }
+
+    .modern-version__browser {
+        margin-right: 25px;
+    }
+
+    .modern-version__close {
+        right: 15px;
+    }
+}
+
+@media screen and (max-width: 1014px) {
+    .eye {
+        right: 15px;
+        top: 6px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .modern-version__browser-img {
+        margin-right: 10px;
+    }
+
+    .modern-version__browser {
+        margin-right: 15px;
+    }
+
+    .modern-version__text {
+        width: auto;
+    }
+
+    .modern-version__attention {
+        text-align: center;
+    }
+
+    .modern-version__close {
+        top: -20px
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .modern-version .containered {
+        flex-wrap: wrap;
+    }
+
+    .modern-version__attention {
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+
+    .filter_btn,
+    .filter,
+    .user-search__title,
+    .form_filter.active {
+        width: 100%;
+    }
+
+    .containered {
+        padding: 0 3%;
+    }
+
+    .header-main {
+        padding-top: 0;
+    }
+
+    .header-main .containered {
+        padding: 0;
+    }
+
+    .header-main__content {
+        padding-top: 25px;
+        padding-left: 10px;
+        min-height: 100px;
+    }
+
+    .logo-block__img {
+        width: 145px;
+    }
+
+
+    .header-main__title {
+        font-size: 1.3125rem;
+    }
+
+    .content .containered {
+        padding: 4.4% 3% 2.6% 3%;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .content .containered>div:first-child {
+        order: 0;
+        margin-bottom: 30px;
+    }
+
+    .footer__ministry {
+        flex-basis: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 0.5fr));
+        grid-column-gap: 10%;
+    }
+
+    .ministry__item:last-child {
+        margin-left: 0;
+    }
+
+    .footer__email {
+        order: 1;
+        flex: 1 1 0;
+        justify-content: flex-start;
+    }
+
+    .account__info {
+        width: 80%;
+    }
+
+    .account__name {
+        font-size: 1.3125rem;
+    }
+
+    .account__image {
+        width: 20%;
+    }
+
+    .account__img-wrap {
+        width: 62px;
+        height: 62px;
+    }
+
+    .account__image {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .btn {
+        font-size: 0.75rem;
+    }
+
+    .sidebar {
+        border-top: 1px solid rgba(29, 34, 32, 0.12);
+        margin-top: 36px;
+        padding-top: 38px;
+    }
+
+    .sidebar__link {
+        color: #1A1D23;
+        font-weight: 400;
+    }
+
+    .sidebar__name {
+        display: none;
+    }
+
+    .filter__item .label-filter,
+    .filter__item .label-filter_lock .label-filter__icon {
+        border: none;
+        background-color: transparent;
+    }
+
+    .filter__left {
+        padding-left: 0;
+    }
+
+    .filter__check {
+        margin-right: 12px;
+    }
+
+    .filter__middle {
+        order: 1;
+        width: 100%;
+    }
+
+    .filter__right {
+        padding-right: 0;
+    }
+
+    .cabinet-user,
+    .cabinet-block-form-form {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .moderation {
+        width: 100%;
+    }
+
+    .edit_profile_btn {
+        margin-top: 30px;
+        margin-left: 0;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .user-search__row {
+        flex-direction: column;
+    }
+
+    .user-search__item,
+    .user-search__row .check {
+        margin-right: 0;
+    }
+
+    .user-search__row .check {
+        margin-bottom: 30px;
+    }
+
+    .user-search__row .check:last-child {
+        margin-bottom: 0;
+    }
+
+    .email-setting__name,
+    .email-setting__item:not(:first-child) .email-setting__desc {
+        grid-column: 1 / 3;
+    }
+
+    .email-setting__item:not(:first-child) .email-setting__desc {
+        margin-bottom: 30px;
+    }
+
+    .email-setting__item:not(:first-child) .email-setting__buttons {
+        grid-row: 3 / 4;
+        grid-column: 1 / 3;
+        justify-self: start;
+    }
+
+    .profile__list {
+        width: 100%;
+    }
+
+    .profile__item .profile-filter__image {
+        flex-basis: 15%;
+    }
+
+    .profile__item .profile-filter__info {
+        flex-basis: 75%;
+        margin-bottom: 23px;
+    }
+
+    .profile__item .profile-filter__go-to {
+        flex-basis: 100%;
+        justify-content: flex-start;
+        padding-left: 25%;
+    }
+
+    .profile-filter__go-to-link {
+        padding: 8px 20px;
+        font-size: 0.875rem;
+    }
+
+    .modal-wrap {
+        width: 90%;
+        padding: 12% 6% 3% 6%;
+    }
+
+    .form-modal__name {
+        font-size: 1.5rem;
+    }
+
+    .modal-wrap-close {
+        top: 1.5%;
+        right: 1.5%;
+    }
+
+    .header-login__drop {
+        transform: translateX(0);
+    }
+
+    .drop-login::before {
+        left: 87%;
+    }
+
+    .news__list {
+        width: unset;
+    }
+
+    .item-news__top {
+        flex-direction: column;
+        margin-bottom: 12px;
+    }
+
+    .item-news__left {
+        margin-right: 0;
+        order: 1;
+    }
+
+    .item-news__right {
+        border-bottom: none;
+        margin-bottom: 6px;
+    }
+
+    .item-news__img-wrap {
+        max-height: 350px;
+    }
+
+    .pagination {
+        width: unset;
+    }
+
+    .detail-news {
+        width: 100%;
+        margin-bottom: 46px;
+    }
+
+    .detail-news__caption {
+        flex-direction: column;
+    }
+
+    .detail-news__left {
+        order: 1;
+        margin-right: 0;
+    }
+
+    .detail-news__date {
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+
+    .header .header-login {
+        flex: 1 1 75%;
+        justify-content: flex-end;
+    }
+
+    .nav__list {
+        flex-direction: column;
+    }
+
+    .nav__item {
+        margin-right: 0;
+    }
+
+    .center_in_block {
+        flex-direction: column;
+        padding: 4%;
+    }
+
+    .about_in_block-left {
+        flex: 1 1 60%;
+    }
+
+    .about_in_block-right {
+        flex: 1 1 30%;
+    }
+
+    .help.active .help-description {
+        right: 0;
+    }
+
+    .cabinet-user .webform-field-upload {
+        min-width: 75px;
+    }
+
+    .label-filter__tooltip {
+        left: -245%;
+        border-radius: 2px 10px 2px 0;
+    }
+
+    .form_input.phone,
+    .form_input.email {
+        background-position: 95% 50%;
+    }
+
+    .eye {
+        right: 9px;
+        top: 5px;
+    }
+
+    .drop-login__menu {
+        display: none;
+    }
+
+    .drop-login__info {
+        border-bottom: none;
+        margin-bottom: 0;
+    }
+
+    .drop-login__email {
+        margin-bottom: 0;
+    }
+
+    .drop-login__name {
+        margin-top: 0;
+    }
+
+    .drop-login {
+        padding: 20px 10px;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    .edit_profile_btn {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .modern-version__browser {
+        margin-right: 0;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .modern-version {
+        padding-bottom: 0;
+    }
+
+    .main-concept {
+        text-align: inherit;
+    }
+}
+
+@media screen and (max-width: 411px) {
+    .login .sign_in .help {
+        right: 24%;
+        bottom: 7px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .form_button .link-button {
+        padding: 16px 20px;
+    }
+
+    .filter__item {
+        padding-bottom: 20px;
+        min-height: 150px;
+    }
+
+    .help-empty {
+        margin-left: 0;
+        flex: 0;
+    }
+
+    .cabinet-block-form .groop_field_title {
+        font-size: 14px;
+    }
+
+    .cabinet-block-form .groop_field .groop_field_title:before {
+        font-size: 12px;
+        right: 80px;
+        top: 9px;
+    }
+
+    .cabinet-block-form .groop_field .groop_field_title:after {
+        top: 18px;
+    }
+}
