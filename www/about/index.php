@@ -2,7 +2,7 @@
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("О проекте");
 ?>
-    <main class="main ">
+    <main class="main">
         <div class="main__header header-main">
             <div class="containered">
                 <div class="header-main__content">
