@@ -20,6 +20,9 @@
         top: 20px;
     }
 }
+div.sfdgfdgdf{
+    color: red;
+}
 
 @media screen and (max-width: 1200px) {
     .modern-version__text {
