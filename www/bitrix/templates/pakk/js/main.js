@@ -559,7 +559,7 @@ $(document).ready(function () {
                 }
             }
         });
-        console.log(groupValid);
+        //console.log(groupValid);
         if (groupValid) {
             $(".required_fields_check li:eq(" + groupNum + ")").removeClass('sidebar__item_error').addClass('sidebar__item_valid');
         } else {
@@ -626,7 +626,8 @@ $(document).ready(function () {
     $("#PROPERTY_PHONE input").inputmask("+7 (999)-999-99-99", {
         //"placeholder": ""
     });
-
+    $(".form_filter input[name='DATE_OF_BIRTH']").inputmask("99.99.9999", {
+    });
     $("#PROPERTY_OGRN input").inputmask("9999999999999", {
         "placeholder": "",
         clearIncompvare: false,

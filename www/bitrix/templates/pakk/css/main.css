@@ -2268,6 +2268,9 @@ sup {
     color: #A3A5A7;
 }
 
+.email {
+    font-size: 0.875rem;
+}
 
 .footer__email.email a {
     line-height: 1.1429em;
@@ -2364,12 +2367,12 @@ li {
 
     display: inline-flex;
     padding: 15px 20px 15px 50px;
-    border: 1px solid rgba(29, 34, 32, 0.12);
+    border: 1px solid #1EB795;
     border-radius: 4px;
 
     font-size: 0.875rem;
     line-height: 1.1429em;
-    color: #333333;
+    color: #1EB795;
     cursor: pointer;
 }
 
@@ -2388,21 +2391,21 @@ li {
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    border: 1px solid rgba(29, 34, 32, 0.12);
+    border: 1px solid #1EB795;
     border-radius: 1px;
 }
 
 .label:after {
     display: none;
-    width: 5px;
-    height: 8px;
+    width: 7px;
+    height: 10px;
     border-bottom: 1px solid #1EB795;
     border-right: 1px solid #1EB795;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
-    top: 38%;
-    left: 14%;
+    top: 36%;
+    left: 13%;
 }
 
 .input:checked+.label:after {
@@ -2613,7 +2616,7 @@ li {
 }
 
 .sidebar {
-    padding-right: 2%;
+    /*padding-right: 5%;*/
     position: sticky;
     top: 100px;
     height: max-content;
